@@ -11,20 +11,14 @@ Autoclicker com hotkey global para Windows.
 
 ### Iniciar o AutoClicker
 ```bat
-START.bat
+tools\START.bat
 ```
-Compila automaticamente e executa o app.
 
 ### Criar atalho na Área de Trabalho
 ```bat
 tools\create-shortcut-simple.bat
 ```
-Cria um atalho na sua Área de Trabalho para executar o app facilmente.
-
-### Ou via tools/
-```bat
-tools\start-simple.bat
-```
+Cria um arquivo `AutoClicker-V1.bat` na Área de Trabalho.
 
 ### Build manual
 ```bat
@@ -33,17 +27,22 @@ tools\build.bat
 
 ## Hotkey
 
-Padrão: **F6** (ativa/desativa o autoclicker - funciona minimizado)
+Padrão: **F6** (ativa/desativa - funciona minimizado)
 
 ## Estrutura
 
 ```
 AutoClicker-V1/
-├── START.bat         # Executar o app (simples)
-├── src/main/java/    # Código-fonte Java
-├── tools/            # Scripts auxiliares
-├── lib/              # Dependências
-└── build/            # JAR compilado
+├── tools/
+│   ├── START.bat                  # Executar o app
+│   ├── build.bat                  # Compilar JAR
+│   ├── start-simple.bat           # Script interno
+│   └── create-shortcut-simple.bat # Criar atalho desktop
+├── src/main/java/                 # Código-fonte
+├── lib/                           # Dependências (auto-download)
+├── .gitignore
+├── pom.xml
+└── README.md
 ```
 
 ## Build com Maven

@@ -9,9 +9,9 @@ echo ========================================
 echo.
 
 set "ROOT=%~dp0.."
-set "START_BAT=%ROOT%\START.bat"
+set "START_BAT=%~dp0START.bat"
 set "DESKTOP=%USERPROFILE%\Desktop"
-set "SHORTCUT=%DESKTOP%\AutoClicker-V1.lnk"
+set "SHORTCUT_BAT=%DESKTOP%\AutoClicker-V1.bat"
 
 if not exist "%START_BAT%" (
     echo [ERRO] START.bat nao encontrado!
@@ -21,9 +21,11 @@ if not exist "%START_BAT%" (
 
 echo Criando atalho...
 
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut('%SHORTCUT%'); $s.TargetPath = '%START_BAT%'; $s.WorkingDirectory = '%ROOT%'; $s.Description = 'AutoClicker-V1 - Hotkey: F6'; $s.Save()"
+echo @echo off > "%SHORTCUT_BAT%"
+echo cd /d "%ROOT%" >> "%SHORTCUT_BAT%"
+echo call tools\START.bat >> "%SHORTCUT_BAT%"
 
-if errorlevel 1 (
+if not exist "%SHORTCUT_BAT%" (
     echo.
     echo [ERRO] Falha ao criar atalho.
     pause
@@ -32,9 +34,9 @@ if errorlevel 1 (
 
 echo.
 echo ✓ Atalho criado com sucesso!
-echo   Local: %DESKTOP%\AutoClicker-V1.lnk
+echo   Local: %DESKTOP%\AutoClicker-V1.bat
 echo.
-echo Agora voce pode clicar duas vezes no atalho para executar.
+echo Agora voce pode clicar duas vezes no arquivo para executar.
 echo.
 pause
 endlocal
