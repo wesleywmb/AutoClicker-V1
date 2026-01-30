@@ -1,54 +1,61 @@
-# AutoClicker-V1
+# AutoClicker Pro
 
-Autoclicker com hotkey global para Windows.
+Aplicativo de clique automático para Windows e recursos de automação.
 
-## Requisitos
+## Funcionalidades
 
-- **Windows 10/11**
-- **Java 11+** no PATH
+- **Controle preciso de intervalo**: Defina intervalos de 0.001 a 60 segundos entre cliques
+- **Seleção de botão do mouse**: Botão esquerdo, direito ou do meio
+- **Tipos de clique**: Clique simples ou duplo
+- **Modos de repetição**: Infinito ou limitado (1 a 999.999 cliques)
+- **Tecla de atalho global**: Tecla de ativação personalizável (padrão: F6)
+- **Operação em segundo plano**: Funciona com a janela minimizada
+- **Feedback**: Contador de cliques
 
-## Uso
+## Requisitos do Sistema
 
-### Iniciar o AutoClicker
-```bat
-tools\START.bat
+- Windows 10/11
+- Java 11 ou superior
+- Maven (opcional, para compilação manual)
+
+## Início Rápido
+
+### 1: Compilar Manualmente
 ```
-
-### Criar atalho na Área de Trabalho
-```bat
-tools\create-shortcut-simple.bat
+tools\compilar.bat
 ```
-Cria um arquivo `AutoClicker-V1.bat` na Área de Trabalho.
+Compila o projeto e gera o arquivo JAR executável.
 
-### Build manual
-```bat
-tools\build.bat
+### Opção 2: Executar
 ```
-
-## Hotkey
-
-Padrão: **F6** (ativa/desativa - funciona minimizado)
-
-## Estrutura
-
+tools\iniciar.bat
 ```
-AutoClicker-V1/
-├── tools/
-│   ├── START.bat                  # Executar o app
-│   ├── build.bat                  # Compilar JAR
-│   ├── start-simple.bat           # Script interno
-│   └── create-shortcut-simple.bat # Criar atalho desktop
-├── src/main/java/                 # Código-fonte
-├── lib/                           # Dependências (auto-download)
-├── .gitignore
-├── pom.xml
-└── README.md
+Este script baixa automaticamente as dependências, compila se necessário e executa o aplicativo.
+
+### Opção 3: Criar Atalho na Área de Trabalho
 ```
+tools\criar-atalho.bat
+```
+Cria um atalho `AutoClicker-Pro.bat` na área de trabalho para acesso rápido.
 
-## Build com Maven
+## Compilando a partir do Código-Fonte
 
+### Usando Maven
 ```bash
 mvn clean package
-java -jar target/autoclicker-v1.jar
+java -jar target/autoclicker-pro.jar
 ```
 
+### Usando Scripts de Compilação
+O projeto inclui scripts automatizados que gerenciam as dependências:
+- `tools\compilar.bat` - Compila o projeto
+- `tools\iniciar.bat` - Compila (se necessário) e executa o aplicativo
+
+## Dependências
+
+- **JNativeHook 2.2.2**: Listeners globais de teclado/mouse
+- **FlatLaf 3.2.5**: Para aplicações Java Swing
+
+---
+
+## Sugestões e melhorias são bem-vindas.
